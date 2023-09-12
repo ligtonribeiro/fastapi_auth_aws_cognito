@@ -4,7 +4,7 @@ from fastapi.exceptions import HTTPException
 from app.models.user import UserResponse, UserRequest
 from app.services.user import UserService
 from app.factory.user_data_factory import UserDataFactory
-from app.implementations.in_memory_user_repository import InMemoryUserRepository as repository
+from app.implementations.repository.in_memory.user_repository_impl import InMemoryUserRepository as repository
 
 router = APIRouter()
 

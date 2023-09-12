@@ -27,15 +27,13 @@ def calculate_cognito_secret_hash(username, client_id, client_secret):
 secret_hash = calculate_cognito_secret_hash(
     'ligton.ribeiro@gmail.com', app_client_id, app_client_secret)
 
+session = boto3.Session()
+
+
 cognito_client = boto3.client(
     'cognito-idp',
     aws_access_key_id=aws_access_key_id,
     aws_secret_access_key=aws_secret_access_key,
-
-
-
-
-
     region_name=os.getenv('AWS_REGION')
 )
 
