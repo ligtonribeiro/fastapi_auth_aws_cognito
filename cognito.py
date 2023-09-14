@@ -27,13 +27,11 @@ def calculate_cognito_secret_hash(username, client_id, client_secret):
 secret_hash = calculate_cognito_secret_hash(
     'ligton.ribeiro@gmail.com', app_client_id, app_client_secret)
 
-session = boto3.Session()
-
 
 cognito_client = boto3.client(
     'cognito-idp',
-    aws_access_key_id=aws_access_key_id,
-    aws_secret_access_key=aws_secret_access_key,
+    # aws_access_key_id=app_client_id,
+    # aws_secret_access_key='',
     region_name=os.getenv('AWS_REGION')
 )
 
@@ -108,15 +106,17 @@ def signin_cognito(email, password):
             ClientId=app_client_id
         )
 
-        access_token = response['AuthenticationResult']['AccessToken']
-        refresh_token = response['AuthenticationResult']['RefreshToken']
-        token_type = response['AuthenticationResult']['TokenType']
+        return response
 
-        return {
-            'access_token': access_token,
-            'refresh_token': refresh_token,
-            'token_type': token_type
-        }
+        # access_token = response['AuthenticationResult']['AccessToken']
+        # refresh_token = response['AuthenticationResult']['RefreshToken']
+        # token_type = response['AuthenticationResult']['TokenType']
+
+        # return {
+        #     'access_token': access_token,
+        #     'refresh_token': refresh_token,
+        #     'token_type': token_type
+        # }
     except ClientError as e:
         if e.response['Error']['Code'] == 'NotAuthorizedException':
             return 'Incorrect username or password'
