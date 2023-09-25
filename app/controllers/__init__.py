@@ -6,5 +6,4 @@ from app.shared.auth import AuthenticatedUser
 
 main_router = APIRouter()
 
-main_router.include_router(user_router, prefix='/user',
-                           tags=['User'], dependencies=[Depends(AuthenticatedUser)])
+main_router.include_router(user_router, prefix='/user', tags=['User'])

@@ -1,5 +1,5 @@
 from app.models.user import User
-from app.repository.user import UserRepository
+from app.ports.user import UserRepository
 
 
 class UserService:
